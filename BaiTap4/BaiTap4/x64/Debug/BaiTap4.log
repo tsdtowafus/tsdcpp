@@ -1,0 +1,4 @@
+﻿  BaiTap4.cpp
+G:\Cpp\BaiTap4\BaiTap4\BaiTap4.cpp(184,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\Cpp\BaiTap4\BaiTap4\BaiTap4.cpp(200,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  BaiTap4.vcxproj -> G:\Cpp\BaiTap4\x64\Debug\BaiTap4.exe
