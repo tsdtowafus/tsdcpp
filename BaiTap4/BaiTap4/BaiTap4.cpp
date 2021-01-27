@@ -181,7 +181,7 @@ int _Is_Int(char buffer[100])
     {
         _return = 0;
     }
-    int ilen = strlen(buffer);
+    int ilen = (int)strlen(buffer);
     for (int i = 1; i < ilen; i++)
     {
         if (isdigit(buffer[i]) == 0)
@@ -197,7 +197,7 @@ int _Is_Float(char buffer[100])
     int _return = 1;
     int _dot_position = 0;
     int i, j;
-    int ilen = strlen(buffer);
+    int ilen = (int)strlen(buffer);
     for (i = 0; i < ilen; i++)
     {
         if (buffer[i] == '.')
@@ -234,51 +234,236 @@ int _Is_Float(char buffer[100])
 void _Exercise_1(void)
 {
     std::cout << "--------------Bai tap 1---------------------\n";
-    // Nhap 2 so nguyen duog x, y
+    // Nhap n
     char _num[50];
-    int x, y;
+    int n;
     while (1)
     {
-        std::cout << "Nhap so nguyen duong x: ";
+        std::cout << "Nhap n: ";
         std::cin >> _num;
         if (_Is_Int(_num) == 1)
         {
-            x = atoi(_num);
-            if (x > 0)
+            n = atoi(_num);
+            if (n > 0)
                 break;
         }
     }
-    while (1)
+    int *a = new int[n];
+    int maxNum = 0;
+    maxNum = a[0];
+    for (int i = 0; i < n; i++)
     {
-        std::cout << "Nhap so nguyen duong y: ";
-        std::cin >> _num;
-        if (_Is_Int(_num) == 1)
+        while (1)
         {
-            y = atoi(_num);
-            if (y > 0)
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
                 break;
+            }
+        }
+        if (a[i] > maxNum)
+        {
+            maxNum = a[i];
+        }
+    }
+    std::cout << "\nSo lon nhat trong day la: " << maxNum;
+    delete[] a;
+}
+
+void _sapXepMangTangDan(int _soPtTrongMang, int* array)
+{
+    int temp;
+    for (int i = 0; i < _soPtTrongMang-1; i++)
+    {
+        for (int j = i+1; j < _soPtTrongMang; j++)
+        {
+            if (array[i] > array[j])
+            {
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
         }
     }
 }
-
 void _Exercise_2(void)
 {
     std::cout << "--------------Bai tap 2---------------------\n";
+    // Nhap n
+    char _num[50];
+    int n;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if (n > 0)
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    _sapXepMangTangDan(n, a);
+    std::cout << "\nDay so duoc sap xep lai la: \n";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << a[i] << "   ";
+    }
+    
+    delete[] a;
 }
 
 void _Exercise_3(void)
 {
     std::cout << "--------------Bai tap 3---------------------\n";
+    char _num[50];
+    int n;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if (n > 0)
+                break;
+        }
+    }
+    int* a = new int[n];
+    int _count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+        if ((i!=0)&&(a[i]==a[i-1]))
+        {
+            _count++;
+        }
+    }
+    std::cout << "\nDay so co so cap phan tu lien tiep bang nhau la: " << _count;
+    delete[] a;
 }
 
 void _Exercise_4(void)
 {
     std::cout << "--------------Bai tap 4---------------------\n";
+    char _num[50];
+    int n;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if (n > 0)
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    int x;
+    while (1)
+    {
+        std::cout << "Nhap x: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            x = atoi(_num);
+            break;
+        }
+    }
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i]==x)
+        {
+            count++;
+        }
+    }
+    std::cout << "\nSo lan xuat hien cua x la: " << count;
+    delete[] a;
 }
 
 void _Exercise_5(void)
 {
     std::cout << "--------------Bai tap 5---------------------\n";
+    char _num[50];
+    int n;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if (n > 0)
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    _sapXepMangTangDan(n, a);
+    int maxI, maxII;
+    maxI = maxII = a[n-1];
+    for (int i = n-1; i >= 0; i--)
+    {
+        if (a[i] != maxII)
+        {
+            maxI = a[i];
+            break;
+        }
+    }
+    std::cout << "\nSo lan xuat hien cua x la: ";
+    delete[] a;
 }
 
 void _Exercise_6(void)
