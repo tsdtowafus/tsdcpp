@@ -421,6 +421,36 @@ void _Exercise_4(void)
     delete[] a;
 }
 
+int _soLonThuHai(int _soPtTrongMang, int* array)
+{
+    int _max_I, _max_II, _min;
+    _max_II = _min = _max_I = array[0];
+    for (int i = 0; i < _soPtTrongMang - 1; i++)
+    {
+        if (array[i] < _min)
+        {
+            _min = array[i];
+        }
+        else if (array[i] > _max_I)
+        {
+            _max_I = array[i];
+        }
+    }
+    _max_II = _min;
+    for (int i = 0; i < _soPtTrongMang; i++)
+    {
+        if (array[i] == _max_I)
+        {
+            array[i] = _min;
+        }
+        if (array[i] > _max_II)
+        {
+            _max_II = array[i];
+        }
+    }
+    return _max_II;
+}
+
 void _Exercise_5(void)
 {
     std::cout << "--------------Bai tap 5---------------------\n";
@@ -438,6 +468,7 @@ void _Exercise_5(void)
         }
     }
     int* a = new int[n];
+    int idenMaxII = 0;
     for (int i = 0; i < n; i++)
     {
         while (1)
@@ -447,22 +478,22 @@ void _Exercise_5(void)
             if (_Is_Int(_num) == 1)
             {
                 a[i] = atoi(_num);
+                if ((i!=0)&&(a[i]!=a[0]))
+                {
+                    idenMaxII = 1;
+                }
                 break;
             }
         }
     }
-    _sapXepMangTangDan(n, a);
-    int maxI, maxII;
-    maxI = maxII = a[n-1];
-    for (int i = n-1; i >= 0; i--)
+    if (idenMaxII == 0)
     {
-        if (a[i] != maxII)
-        {
-            maxI = a[i];
-            break;
-        }
+        std::cout << "\nKhong co so lon thu hai";
     }
-    std::cout << "\nSo lan xuat hien cua x la: ";
+    else
+    {
+        std::cout << "\nSo lon thu hai la: " << _soLonThuHai(n,a);
+    }
     delete[] a;
 }
 
