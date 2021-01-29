@@ -1,2 +1,4 @@
 ﻿  BaiTap4.cpp
+G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(570,12): warning C4101: 'b': unreferenced local variable
+G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(570,15): warning C4101: 'c': unreferenced local variable
   BaiTap4.vcxproj -> G:\Cpp\tsdcpp\BaiTap4\x64\Debug\BaiTap4.exe

@@ -500,11 +500,104 @@ void _Exercise_5(void)
 void _Exercise_6(void)
 {
     std::cout << "--------------Bai tap 6---------------------\n";
+    char _num[50];
+    int n, b, c;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if (n > 0)
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    while (1)
+    {
+        std::cout << "Nhap b: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            b = atoi(_num);
+            if (b > 0)
+                break;
+        }
+    }
+    while (1)
+    {
+        std::cout << "Nhap c (c>b): ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            c = atoi(_num);
+            if (c > b)
+                break;
+        }
+    }
+    // Tinh trung binh cong cac gia tri trong khoang b->c
+    int sum = 0, count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if ((a[i] >= b) && (a[i]<=c))
+        {
+            sum = sum + a[i];
+            count++;
+        }
+    }
+    std::cout << "Trung binh cong cac phan tu tu b den c: " << (float)sum*1.0/count;
+    delete[] a;
 }
 
 void _Exercise_7(void)
 {
     std::cout << "--------------Bai tap 7---------------------\n";
+    char _num[50];
+    int n, b, c;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if (n > 0)
+                break;
+        }
+    }
+    int* a = new int[n];
+    int _soluongsochan = 0;
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                if (a[i] % 2 == 0) _soluongsochan++;
+                break;
+            }
+        }
+    }
+    std::cout << "\nSo luong so chan la: " << _soluongsochan;
+    std::cout << "\nSo luong so le la: " << n-_soluongsochan;
+    delete[] a;
 }
 
 void _Exercise_8(void)
