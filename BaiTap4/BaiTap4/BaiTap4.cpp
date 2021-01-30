@@ -666,19 +666,196 @@ void _Exercise_8(void)
     delete[] a;
 }
 
+int _IsSymmetricalArray(int n, int* a)
+{
+    
+    for (int i = 0; i < n/2; i++)
+    {
+        if (a[i]!=a[n-1-i])
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
 void _Exercise_9(void)
 {
     std::cout << "--------------Bai tap 9---------------------\n";
+    char _num[50];
+    int n, b, c;
+    while (1)
+    {
+        std::cout << "Nhap n (0 < n < 10001): ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if ((n > 0) && (0 <= 10000))
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    if (_IsSymmetricalArray(n, a))
+    {
+        std::cout << "\nMang la mang doi xung";
+    }
+    else
+    {
+        std::cout << "\nMang khong phai la mang doi xung";
+    }
 }
 
 void _Exercise_10(void)
 {
     std::cout << "--------------Bai tap 10--------------------\n";
+    char _num[50];
+    int n, b, c;
+    while (1)
+    {
+        std::cout << "Nhap n (0 < n < 10001): ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if ((n > 0) && (0 <= 10000))
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    _sapXepMangTangDan(n, a);
+    int _doDai = 1, _soXhNhieuNhat = 0, _countDoDai = 1;
+    for (int i = 1; i < n; i++)
+    {
+        if (a[i] == a[i-1])
+        {
+            _countDoDai++;
+            if (_countDoDai > _doDai)
+            {
+                _doDai = _countDoDai;
+            }
+        }
+        else
+        {
+            _countDoDai = 1;
+        }
+    }
+    _countDoDai = 1;
+    std::cout << "\nSo co lan xuat hien nhieu nhat trong mang a la: \n";
+    if (_doDai==1)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            std::cout << a[i] << "   ";
+        }
+    }
+    else
+    {
+        for (int i = 1; i < n; i++)
+        {
+            if (a[i] == a[i - 1])
+            {
+                _countDoDai++;
+                if (_countDoDai == _doDai)
+                {
+                    std::cout << a[i] << "   ";
+                }
+            }
+            else
+            {
+                _countDoDai = 1;
+            }
+        }
+    }
 }
 
 void _Exercise_11(void)
 {
     std::cout << "--------------Bai tap 11--------------------\n";
+    char _num[50];
+    int n, X;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+                break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    while (1)
+    {
+        std::cout << "Nhap X: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            X = atoi(_num);
+            break;
+        }
+    }
+    int _mark = 1;
+    int _abs = 0;
+    
+    std::cout << "\nVi tri phan tu tren a co gia tri gan voi X nhat la: \n";
+    int _minB = a[0];
+    int* b = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        b[i] = abs(a[i] - X);
+        if (b[i] < _minB)
+        {
+            _minB = b[i];
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (b[i] == _minB)
+        {
+            std::cout << i << "   ";
+        }
+    }
+    delete a;
+    delete b;
 }
 
 void _Exercise_12(void)

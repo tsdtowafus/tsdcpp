@@ -3,4 +3,8 @@ G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(570,12): warning C4101: 'b': unreferen
 G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(570,15): warning C4101: 'c': unreferenced local variable
 G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(623,12): warning C4101: 'b': unreferenced local variable
 G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(623,15): warning C4101: 'c': unreferenced local variable
+G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(685,12): warning C4101: 'b': unreferenced local variable
+G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(685,15): warning C4101: 'c': unreferenced local variable
+G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(725,12): warning C4101: 'b': unreferenced local variable
+G:\Cpp\tsdcpp\BaiTap4\BaiTap4\BaiTap4.cpp(725,15): warning C4101: 'c': unreferenced local variable
   BaiTap4.vcxproj -> G:\Cpp\tsdcpp\BaiTap4\x64\Debug\BaiTap4.exe
