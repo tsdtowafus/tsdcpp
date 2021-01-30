@@ -600,9 +600,70 @@ void _Exercise_7(void)
     delete[] a;
 }
 
+int _IsPrimes(int n)
+{
+    if (n < 2) return 0;
+    else
+    {
+        for (int i = 2; i <= sqrt(n); i++)
+        {
+            if (n % i == 0)
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 void _Exercise_8(void)
 {
     std::cout << "--------------Bai tap 8---------------------\n";
+    char _num[50];
+    int n, b, c;
+    while (1)
+    {
+        std::cout << "Nhap n (0 < n < 10001): ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            if ((n > 0) && (0 <= 10000))
+                break;
+        }
+    }
+    int* a = new int[n];
+    int _soluongsoDuong = 0, _tongsoAm = 0, _tongsoDuong = 0;
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                if (a[i]>0)
+                {
+                    _soluongsoDuong++;
+                    _tongsoDuong += a[i];
+                }
+                else if (a[i] < 0)
+                {
+                    _tongsoAm += a[i];
+                }
+                break;
+            }
+        }
+    }
+    std::cout << "\nTrung binh cong cac so am la: " << (float)_tongsoAm/(n-_soluongsoDuong);
+    std::cout << "\nTrung binh cong cac so duong la: " << (float)_tongsoDuong/_soluongsoDuong;
+    std::cout << "\nTat ca cac so nguyen to trong mang la: \n";
+    for (int i = 0; i < n; i++)
+    {
+        if (_IsPrimes(a[i])) std::cout << a[i] << "   ";
+    }
+    delete[] a;
 }
 
 void _Exercise_9(void)
