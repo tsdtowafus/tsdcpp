@@ -1,8 +1,10 @@
-// BaiTap4.cpp : This file contains the 'main' function. Program execution begins and ends there.
+﻿// BaiTap4.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 
 #include <iostream>
+#include <time.h>   // Tạo số ngẫu nhiên
+
 
 int _Is_Int(char buffer[100]);
 int _Is_Float(char buffer[100]);
@@ -40,6 +42,8 @@ void _Exercise_30(void);
 int main()
 {
     int _while = 1;
+    srand((int)time(0));                // tạo số ngẫu nhiên
+
     std::cout << "Hello World\n";
     while (_while)
     {
@@ -716,6 +720,7 @@ void _Exercise_9(void)
     {
         std::cout << "\nMang khong phai la mang doi xung";
     }
+    delete[] a;
 }
 
 void _Exercise_10(void)
@@ -792,6 +797,7 @@ void _Exercise_10(void)
             }
         }
     }
+    delete[] a;
 }
 
 void _Exercise_11(void)
@@ -854,33 +860,324 @@ void _Exercise_11(void)
             std::cout << i << "   ";
         }
     }
-    delete a;
-    delete b;
+    delete[] a;
+    delete[] b;
 }
+
 
 void _Exercise_12(void)
 {
     std::cout << "--------------Bai tap 12--------------------\n";
+    char _num[50];
+    int n;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            break;
+        }
+    }
+    int* a = new int[n];
+    std::cout << "\nMang duoc tao random: \n";
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = rand()%100;
+        std::cout << a[i] << "   ";
+    }
+    std::cout << "\nMang co cac so khac nhau: \n" << a[0] << "   ";
+    for (int i = 1; i < n; i++)
+    {
+        // neu khac nhung so truoc thi in ra
+        int _khac = 1;
+        for (int j = 0; j < i; j++)
+        {
+            if (a[i] == a[j])
+            {
+                _khac = 0;
+            }
+        }
+        if (_khac == 1)
+        {
+            std::cout << a[i] << "   ";
+        }
+    }
+    delete[] a;
 }
 
 void _Exercise_13(void)
 {
     std::cout << "--------------Bai tap 13--------------------\n";
+    char _num[50];
+    int n, X;
+    while (1)
+    {
+        std::cout << "Nhap n: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {  
+                a[i] = atoi(_num);
+                int _khacNhau = 1;
+                for (int j = 0; j < i; j++)
+                {
+                    if (a[i] == a[j])
+                    {
+                        _khacNhau = 0;
+                    }
+                }
+                if (_khacNhau == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    std::cout << "\nSo nay da ton tai. Nhap lai!!!\n";
+                }
+                
+            }
+        }
+    }
+    std::cout << "\nMang vua nhap: \n";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << a[i] << "   ";
+    }
+    delete[] a;
 }
 
 void _Exercise_14(void)
 {
     std::cout << "--------------Bai tap 14--------------------\n";
+    // Nhap mang (a, N)
+    char _num[50];
+    int n, m, p, k;
+    while (1)
+    {
+        std::cout << "Mang (a,N). Nhap N: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    // Nhap mang (b, M)
+    while (1)
+    {
+        std::cout << "Mang (b,M). Nhap M: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            m = atoi(_num);
+            break;
+        }
+    }
+    int* b = new int[m];
+    for (int i = 0; i < m; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap b[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                b[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    // Nhap so nguyen (0<=p<N)
+    while (1)
+    {
+        std::cout << "Nhap p: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            p = atoi(_num);
+            if ((p<n)&&(p>=0))
+            {
+                break;
+            }
+        }
+    }
+    // Mang sau khi duoc chen
+    int i;
+    std::cout << "\nMang a:  \n";
+    for (i = 0; i < n; i++)
+    {
+        std::cout << a[i] << "   ";
+    }
+    std::cout << "\nMang b:  \n";
+    for (i = 0; i < m; i++)
+    {
+        std::cout << b[i] << "   ";
+    }
+    std::cout << "\nMang a sau khi chen mang b vao:  \n";
+    k = n + m;
+    int* c = new int[k];
+    for (i = 0; i < k; i++)
+    {
+        if (i < p)
+        {
+            c[i] = a[i];
+        }
+        else if (i<p+m)
+        {
+            c[i] = b[i - p];
+        }
+        else
+        {
+            c[i] = a[i - m];
+        }
+        
+    }
+    delete[] a;
+    a = new int[k];
+    for (i = 0; i < k; i++)
+    {
+        a[i] = c[i];
+        std::cout << a[i] << "   ";
+    }
+    delete[] a;
+    delete[] b;
+    delete[] c;
+}
+
+void _swap(int* a, int* b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void _bubbleSort(int* arr, int n)
+{
+    int i, j;
+    bool _haveSwap = false;
+    for (i = 0; i < n - 1; i++) {
+        // i phần tử cuối cùng đã được sắp xếp
+        _haveSwap = false;
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                _swap(&arr[j], &arr[j + 1]);
+                _haveSwap = true; // Kiểm tra lần lặp này có swap không
+            }
+        }
+        // Nếu không có swap nào được thực hiện => mảng đã sắp xếp. Không cần lặp thêm
+        if (_haveSwap == false) {
+            break;
+        }
+    }
 }
 
 void _Exercise_15(void)
 {
+    // Nhập số n và dãy các số nguyên  a[0], a[1],..., a[n-1] 
+    // rồi sắp xếp dãy trên theo thứ tự tăng dần theo phương pháp nổi bọt (bubble sort).
     std::cout << "--------------Bai tap 15--------------------\n";
+    char _num[50];
+    int n;
+    while (1)
+    {
+        std::cout << "Mang (a,N). Nhap N: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            break;
+        }
+    }
+    int* a = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
+    std::cout << "\nMang a sau khi sap xep:\n";
+    _bubbleSort(a, n);
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << a[i] << "   ";
+    }
+    delete[] a;
+}
+
+void _nhapMang_aN(int* a, int &n)
+{
+    char _num[50];
+    while (1)
+    {
+        std::cout << "Mang (a,N). Nhap N: ";
+        std::cin >> _num;
+        if (_Is_Int(_num) == 1)
+        {
+            n = atoi(_num);
+            break;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        while (1)
+        {
+            std::cout << "\nNhap a[" << i << "]: ";
+            std::cin >> _num;
+            if (_Is_Int(_num) == 1)
+            {
+                a[i] = atoi(_num);
+                break;
+            }
+        }
+    }
 }
 
 void _Exercise_16(void)
 {
+    // Nhập số liệu  cho dãy số nguyên  a0 , a1 ,..., an-1   và  một giá trị thực  x. 
+    // Giả sử dãy  a đã được sắp xếp theo thứ tự tăng dần. 
+    // Hãy chèn  giá trị  x vào dãy  a sao cho vẫn giữ được tính sắp xếp của mảng.
     std::cout << "--------------Bai tap 16--------------------\n";
+    int n;
+    int* a = new int[n];
+    _nhapMang_aN(a, n);
+
 }
 
 void _Exercise_17(void)
