@@ -1140,24 +1140,29 @@ void _Exercise_15(void)
     delete[] a;
 }
 
-void _nhapMang_aN(int* a, int &n)
+void _nhapSo(char x, int* n)
 {
     char _num[50];
     while (1)
     {
-        std::cout << "Mang (a,N). Nhap N: ";
+        std::cout << "Nhap " << x << ": ";
         std::cin >> _num;
         if (_Is_Int(_num) == 1)
         {
-            n = atoi(_num);
+            *n = atoi(_num);
             break;
         }
     }
+}
+
+void _nhapMang(char x, int* a, int n)
+{
+    char _num[50];
     for (int i = 0; i < n; i++)
     {
         while (1)
         {
-            std::cout << "\nNhap a[" << i << "]: ";
+            std::cout << "\nNhap " << x << "[" << i << "]: ";
             std::cin >> _num;
             if (_Is_Int(_num) == 1)
             {
@@ -1175,9 +1180,50 @@ void _Exercise_16(void)
     // Hãy chèn  giá trị  x vào dãy  a sao cho vẫn giữ được tính sắp xếp của mảng.
     std::cout << "--------------Bai tap 16--------------------\n";
     int n;
+    _nhapSo('N', &n);
     int* a = new int[n];
-    _nhapMang_aN(a, n);
-
+    _nhapMang('a', a, n);
+    int x;
+    _nhapSo('x', &x);
+    _sapXepMangTangDan(n, a);
+    std::cout << "\nMang duoc sap xep tang dan: \n";
+        for (int i = 0; i < n; i++)
+        {
+            std::cout << a[i] << "  ";
+        }
+    std::cout << "\nMang sau khi chen x vao: \n";
+    if (n==1)
+    {
+        a[0] = x;
+    }
+    else
+    {
+        if (x < a[1])
+        {
+            a[0] = x;
+        }
+        else if (x> a[n-2])
+        {
+            a[n-1] = x;
+        }
+        else
+        {
+            for (int i = 1; i < n - 1; i++)
+            {
+                if ((x > a[i - 1]) && (x < a[i + 1]))
+                {
+                    a[i] = x;
+                    break;
+                }
+            }
+        }
+        
+    }
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << a[i] << "  ";
+    }
+    delete[] a;
 }
 
 void _Exercise_17(void)
